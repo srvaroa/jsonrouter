@@ -1,0 +1,12 @@
+{
+    "routes": [
+        {
+            "path":     "$.books",
+            "target": "http://localhost:8080/library"
+        },
+        {
+            "path":     "$.books[?(@.author =~ /(?i).*TOLSTOI/)].author",
+            "target": "http://localhost:8080/tolstoi"
+        }
+    ]
+}
