@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/srvaroa/jsonrouter/pkg/forwarders"
 	"github.com/srvaroa/jsonrouter/pkg/router"
 )
 
@@ -38,7 +39,11 @@ func main() {
 		os.Exit(1)
 	}
 
+	dump := forwarder.HttpForwarder{}
 	for endpoint, _ := range res {
-		fmt.Println(endpoint)
+		err = dump.Send(&data, endpoint)
+		if err != nil {
+			fmt.Println("Failed to forward event", err)
+		}
 	}
 }
