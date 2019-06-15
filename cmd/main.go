@@ -39,9 +39,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	dump := forwarder.HttpForwarder{}
+	forwarder := forwarder.HttpForwarder{}
 	for endpoint, _ := range res {
-		err = dump.Send(&data, endpoint)
+		err = forwarder.Send(&data, endpoint)
 		if err != nil {
 			fmt.Println("Failed to forward event", err)
 		}
